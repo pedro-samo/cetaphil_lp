@@ -11,10 +11,13 @@
 
 //   contactForm.addEventListener("submit", (e) => {
 //     const data = {
-//       Nome_completo,
-//       Email,
+//       nome,
+//       sobrenome,
+//       dataNascimento,
+//       email,
+//       linkVideo,
 //       Telefone: "55" + Telefone.replace(/\D/g, ""),
-//       Optin: Optin ? "true" : "false"
+//       optinEmail: Optin ? "true" : "false"
 //     };
 
 //     let formData = new FormData();
