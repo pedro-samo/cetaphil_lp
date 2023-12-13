@@ -1,0 +1,54 @@
+%%[
+  set @nome = requestParameter("nome")
+
+  SET @results = lookup("tb_LP_Migracao_2_Score", "email", "email", @email)
+]%%
+
+<script runat="server">
+
+Platform.Load("core", "1");
+Platform.Response.SetResponseHeader("Access-Control-Allow-Methods", "POST");
+Platform.Response.SetResponseHeader("Access-Control-Allow-Origin", "*");
+Platform.Response.SetResponseHeader("Set-Cookie", "Secure");
+Platform.Response.SetResponseHeader("Strict-Transport-Security", "max-age = 0, cache-control: private, no-cache  ");
+Platform.Response.SetResponseHeader("X-XSS-Protection", "1; mode=block");
+Platform.Response.SetResponseHeader("X-Frame-Options", "Deny");
+Platform.Response.SetResponseHeader("X-Content-Type-Options", "nosniff");
+Platform.Response.SetResponseHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+Platform.Response.SetResponseHeader("Content-Security-Policy", "default-src 'self'");
+
+var nome = Variable.GetValue("@nome");
+
+  if (isEmpty(email)){
+    Write('{"message":"Não é possível inserir dados Nulos...","statusCode":500}');
+  }else{
+   try{
+       var de = DataExtension.Init('tb_LP_Migracao_2_Score');
+      try{
+        var results = Variable.GetValue("@results");
+
+        if (isEmpty(results)){
+          try{
+            de.Rows.Add({nome:nome});
+
+            Write('{"message":"Cadastro realizado com sucesso.","statusCode":200}');
+
+            }catch(err){
+             Write(err);
+            }
+
+         }else{
+           Write('{"message":"O e-mail já preencheu o formulário.","statusCode":400}');
+          }
+      }catch(err){
+         Write('{"message":"Não foi possível consultar as informações","statusCode":500}');
+      }
+   }catch(err){
+     Write('{"message":"Não foi possível iniciar a DataExtension","statusCode":500}');
+   }
+  }
+  function isEmpty(str) {
+      return (!str || 0 === str.length);
+  }
+
+</script>
