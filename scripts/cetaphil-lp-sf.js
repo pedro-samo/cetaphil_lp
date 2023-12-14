@@ -9,6 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const termosCheckbox1Input = document.getElementById("termosCheckbox1");
   const termosCheckbox2Input = document.getElementById("termosCheckbox2");
   const newsletterCheckboxInput = document.getElementById("newsletterCheckbox");
+  const contactFormSection = document.querySelector(".x-cetaphil__container__cadastro-form__section.section2");
+  const successInterface = document.querySelector(".x-cetaphil__container__cadastro-form__section.section3");
 
   const maskPhoneInput = () => {
     IMask(telefoneInput, {
@@ -98,6 +100,13 @@ window.addEventListener("DOMContentLoaded", () => {
         Swal.fire("Ops!", "Revise seus dados e tente novamente!", "error");
       } else {
         Swal.fire("Sucesso!", "Cadastro realizado com sucesso!", "success");
+      }
+
+      if (response.ok) {
+        contactFormSection.style.display = "none";
+
+        // Exibir a seção
+        successInterface.style.display = "flex";
       }
     } catch (error) {
       console.error(error);
