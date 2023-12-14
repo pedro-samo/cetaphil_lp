@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
       dataNascimento,
       email,
       linkVideo,
-      Telefone: "55" + telefone.replace(/\D/g, ""),
+      telefone: "55" + telefone.replace(/\D/g, ""),
       optinEmail: newsletterCheckbox ? "true" : "false"
     };
 
