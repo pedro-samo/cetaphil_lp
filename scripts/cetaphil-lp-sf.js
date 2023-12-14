@@ -120,7 +120,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       if (responseData.statusCode === 400) {
         Swal.fire("Ops!", "E-mail já cadastrado!", "error");
-      } else if (responsebirth.statusCode === 500) {
+      } else if (responseData.statusCode === 500) {
         Swal.fire("Ops!", "Revise seus dados e tente novamente!", "error");
       } else {
         contactFormSection.style.display = "none";
