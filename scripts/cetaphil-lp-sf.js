@@ -103,8 +103,9 @@ window.addEventListener("DOMContentLoaded", () => {
       formData.append(key, value);
     });
 
-    sendButton.innerText = "Enviando";
+    sendButton.innerText = "Enviando...";
     sendButton.disabled = true;
+    sendButton.style.pointerEvents = "none";
 
     try {
       const response = await fetch("/integracao-cetaphil-sf", {
@@ -120,7 +121,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       if (responseData.statusCode === 400) {
         Swal.fire("Ops!", "E-mail já cadastrado!", "error");
-      } else if (responsebirth.statusCode === 500) {
+      } else if (responseData.statusCode === 500) {
         Swal.fire("Ops!", "Revise seus dados e tente novamente!", "error");
       } else {
         contactFormSection.style.display = "none";
@@ -137,6 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } finally {
       sendButton.innerText = "Enviar";
       sendButton.disabled = false;
+      sendButton.style.pointerEvents = "auto";
     }
   });
 

@@ -113,6 +113,7 @@
           display: flex;
           gap: 16px;
           align-items: flex-start;
+          cursor: pointer;
 
           #politicaDePrivacidade {
             a {
@@ -126,12 +127,14 @@
             border-radius: 2px;
             border: 1px solid #90a5ac;
             opacity: 0.86;
+            cursor: pointer;
           }
 
           label {
             text-align: start;
             font-size: 15px;
             max-width: 508px;
+            cursor: pointer;
 
             span {
               font-size: 15px;
