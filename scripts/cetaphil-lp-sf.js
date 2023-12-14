@@ -18,6 +18,10 @@ window.addEventListener("DOMContentLoaded", () => {
     ".x-cetaphil__container__cadastro-form__section__button-wrapper.send button"
   );
 
+  const successInterfaceHeading = document.querySelector(
+    ".x-cetaphil__container__cadastro-form__section.section1 > h2"
+  );
+
   const maskPhoneInput = () => {
     if (telefoneInput) {
       IMask(telefoneInput, {
@@ -120,6 +124,11 @@ window.addEventListener("DOMContentLoaded", () => {
         Swal.fire("Ops!", "Revise seus dados e tente novamente!", "error");
       } else {
         contactFormSection.style.display = "none";
+        successInterfaceHeading.innerText = "CADASTRO REALIZADO COM SUCESSO!";
+        if (window.innerWidth <= 768) {
+          successInterfaceHeading.style.textAlign = "left";
+          successInterfaceHeading.style.maxWidth = "278px";
+        }
         successInterface.style.display = "flex";
       }
     } catch (error) {

@@ -203,6 +203,10 @@
             line-height: 150%;
             letter-spacing: 2px;
             text-transform: uppercase;
+
+            @media (max-width: 765px) {
+              text-align: left;
+            }
           }
 
           &.p2 {
