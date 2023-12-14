@@ -2,21 +2,57 @@
   margin: 60px auto;
 
   &__cadastro-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     background-color: #f1f9fc;
-    width: 974px;
-    height: 624px;
+    max-width: 974px;
+    min-height: 624px;
     border-radius: 28px;
-    margin: 60px auto; // Movido do estilo inline
+    margin: 60px auto;
+    gap: 55px;
 
     &__section {
       text-align: center;
 
+      &.section1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &.section2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 33px;
+      }
+
+      h2 {
+        max-width: 530px;
+        color: #004987;
+        text-align: center;
+        font-family: "BrandonGrotesque-Regular";
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 420;
+        line-height: 120%;
+        letter-spacing: 3.6px;
+      }
+
       &__intput-container {
-        width: 573px;
+        max-width: 573px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        gap: 33px;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
 
         &__input-group {
           display: flex;
@@ -26,6 +62,7 @@
             flex: 1;
 
             input {
+              box-sizing: border-box;
               width: 275px;
               height: 40px;
               padding: 9.091px 22px 6.909px 22px;
@@ -33,42 +70,90 @@
               border-radius: 8px;
               border: 1px solid #fff;
               background: #fff;
+
+              &::placeholder {
+                color: #5e656b;
+                font-family: "BrandonGrotesque-Regular";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 390;
+                line-height: 150%;
+              }
             }
           }
         }
       }
 
       &__text-content {
-        width: 490px;
-        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 490px;
         color: #004987;
         font-size: 12px;
         font-style: normal;
         font-weight: 390;
         line-height: 140%;
+        gap: 21px;
 
-        a {
-          color: #004987;
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 390;
-          line-height: 140%;
-          text-decoration-line: underline;
+        &__checkbox-wrapper {
+          display: flex;
+          gap: 16px;
+          align-items: baseline;
+
+          input {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            border: 1px solid #90a5ac;
+            opacity: 0.86;
+          }
+
+          label {
+            text-align: start;
+            max-width: 450px;
+          }
+
+          a {
+            color: #004987;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 390;
+            line-height: 140%;
+            text-decoration-line: underline;
+          }
         }
       }
 
       &__button-wrapper {
+        width: 100%;
         display: flex;
-        width: 173px;
-        height: 39.832px;
-        padding: 12px 24px;
         justify-content: center;
         align-items: center;
-        gap: 10px;
-        border-radius: 40px;
-        border: 1px solid var(--Gradient-Blue-Turquoise, #004987);
-        background: var(--Gradient-Blue-Turquoise, linear-gradient(105deg, #004987 47.63%, #38a6c4 93.7%));
-        margin: 0 auto;
+
+        button {
+          display: flex;
+          width: 173px;
+          height: 39.832px;
+          padding: 12px 24px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 40px;
+          border: 1px solid #004987;
+          background: linear-gradient(105deg, #004987 47.63%, #38a6c4 93.7%);
+          margin: 0 auto;
+
+          color: #f2f2f2;
+          text-align: center;
+          font-family: "BrandonGrotesque-Medium";
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 130%;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
       }
     }
   }
