@@ -16,7 +16,21 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const maskNameInput = () => {
+    IMask(nomeInput, {
+      mask: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/
+    });
+  };
+
+  const maskSurnameInput = () => {
+    IMask(document.getElementById("sobrenome"), {
+      mask: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/
+    });
+  };
+
   maskPhoneInput();
+  maskNameInput();
+  maskSurnameInput();
 
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
