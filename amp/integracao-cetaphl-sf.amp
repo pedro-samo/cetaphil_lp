@@ -1,5 +1,11 @@
 %%[
   set @nome = requestParameter("nome")
+  set @sobrenome = requestParameter("sobrenome")
+  set @dataNascimento = requestParameter("dataNascimento")
+  set @email = requestParameter("email")
+  set @linkVideo = requestParameter("linkVideo")
+  set @telefone = requestParameter("telefone")
+  set @optinEmail = requestParameter("optinEmail")
 
   SET @results = lookup("tb_semana_da_moda_lp", "email", "email", @email)
 ]%%
@@ -18,6 +24,12 @@ Platform.Response.SetResponseHeader("Referrer-Policy", "strict-origin-when-cross
 Platform.Response.SetResponseHeader("Content-Security-Policy", "default-src 'self'");
 
 var nome = Variable.GetValue("@nome");
+var sobrenome = Variable.GetValue("@sobrenome");
+var dataNascimento = Variable.GetValue("@dataNascimento");
+var email = Variable.GetValue("@email");
+var linkVideo = Variable.GetValue("@linkVideo");
+var telefone = Variable.GetValue("@telefone");
+var optinEmail = Variable.GetValue("@optinEmail");
 
   if (isEmpty(email)){
     Write('{"message":"Não é possível inserir dados Nulos...","statusCode":500}');
@@ -29,7 +41,7 @@ var nome = Variable.GetValue("@nome");
 
         if (isEmpty(results)){
           try{
-            de.Rows.Add({nome:nome});
+            de.Rows.Add({nome:nome, sobrenome:sobrenome, dataNascimento:dataNascimento, email:email, linkVideo:linkVideo, telefone:telefone, optinEmail:optinEmail});
 
             Write('{"message":"Cadastro realizado com sucesso.","statusCode":200}');
 
