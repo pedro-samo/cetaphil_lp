@@ -49,7 +49,7 @@
         font-family: "BrandonGrotesque-Regular";
         font-size: 36px;
         font-style: normal;
-        font-weight: 420;
+        font-weight: 600;
         line-height: 120%;
         letter-spacing: 3.6px;
       }
@@ -113,10 +113,11 @@
           display: flex;
           gap: 16px;
           align-items: baseline;
+          align-items: center;
 
           input {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 2px;
             border: 1px solid #90a5ac;
             opacity: 0.86;
@@ -124,6 +125,7 @@
 
           label {
             text-align: start;
+            font-size: 15px;
             max-width: 450px;
           }
 
@@ -144,7 +146,8 @@
         justify-content: center;
         align-items: center;
 
-        button {
+        button,
+        a {
           display: flex;
           width: 173px;
           height: 39.832px;

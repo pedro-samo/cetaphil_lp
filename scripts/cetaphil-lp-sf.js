@@ -11,6 +11,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const newsletterCheckboxInput = document.getElementById("newsletterCheckbox");
   const contactFormSection = document.querySelector(".x-cetaphil__container__cadastro-form__section.section2");
   const successInterface = document.querySelector(".x-cetaphil__container__cadastro-form__section.section3");
+  const enjoyButton = document.querySelector(
+    ".x-cetaphil__container__cadastro-form__section__button-wrapper.enjoy button"
+  );
+  const sendButton = document.querySelector(
+    ".x-cetaphil__container__cadastro-form__section__button-wrapper.send button"
+  );
 
   const maskPhoneInput = () => {
     IMask(telefoneInput, {
@@ -78,6 +84,9 @@ window.addEventListener("DOMContentLoaded", () => {
       formData.append(key, value);
     });
 
+    sendButton.innerText = "Enviando";
+    sendButton.disabled = true;
+
     try {
       const response = await fetch("/integracao-cetaphil-sf", {
         method: "POST",
@@ -95,18 +104,17 @@ window.addEventListener("DOMContentLoaded", () => {
       } else if (responseData.statusCode === 500) {
         Swal.fire("Ops!", "Revise seus dados e tente novamente!", "error");
       } else {
-        Swal.fire("Sucesso!", "Cadastro realizado com sucesso!", "success");
-      }
-
-      if (response.ok) {
         contactFormSection.style.display = "none";
-
-        // Exibir a seção
         successInterface.style.display = "flex";
       }
     } catch (error) {
       console.error(error);
       Swal.fire("Ops!", "Ocorreu um erro. Tente novamente mais tarde!", "error");
+    } finally {
+      sendButton.innerText = "Enviar";
+      sendButton.disabled = false;
     }
   });
+
+  enjoyButton.addEventListener("click", () => window.open("https://www.belezanaweb.com.br/cetaphil", "_blank"));
 });
