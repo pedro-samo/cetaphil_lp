@@ -19,26 +19,41 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 
   const maskPhoneInput = () => {
-    IMask(telefoneInput, {
-      mask: "(00) 00000-0000"
-    });
+    if (telefoneInput) {
+      IMask(telefoneInput, {
+        mask: "(00) 00000-0000"
+      });
+    }
   };
 
   const maskNameInput = () => {
-    IMask(nomeInput, {
-      mask: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/
-    });
+    if (nomeInput) {
+      IMask(nomeInput, {
+        mask: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/
+      });
+    }
   };
 
   const maskSurnameInput = () => {
-    IMask(document.getElementById("sobrenome"), {
-      mask: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/
-    });
+    if (sobrenomeInput) {
+      IMask(sobrenomeInput, {
+        mask: /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]*$/
+      });
+    }
+  };
+
+  const maskBirthdate = () => {
+    if (dataNascimentoInput) {
+      IMask(dataNascimentoInput, {
+        mask: "00/00/0000"
+      });
+    }
   };
 
   maskPhoneInput();
   maskNameInput();
   maskSurnameInput();
+  maskBirthdate();
 
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -101,7 +116,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       if (responseData.statusCode === 400) {
         Swal.fire("Ops!", "E-mail já cadastrado!", "error");
-      } else if (responseData.statusCode === 500) {
+      } else if (responsebirth.statusCode === 500) {
         Swal.fire("Ops!", "Revise seus dados e tente novamente!", "error");
       } else {
         contactFormSection.style.display = "none";
