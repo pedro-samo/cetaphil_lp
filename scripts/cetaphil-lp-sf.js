@@ -70,17 +70,13 @@ window.addEventListener("DOMContentLoaded", () => {
       optinEmail: newsletterCheckbox ? "true" : "false"
     };
 
-    console.log(data);
-
     let formData = new FormData();
-    formData.append("nome", nome);
-    formData.append("sobrenome", sobrenome);
-    formData.append("dataNascimento", dataNascimento);
-    formData.append("email", email);
-    formData.append("linkVideo", linkVideo);
-    formData.append("Telefone", "55" + telefone.replace(/\D/g, ""));
-    formData.append("optinEmail", newsletterCheckbox ? "true" : "false");
-    console.log(formData);
+
+    Object.entries(data).forEach((position) => {
+      const key = position[0];
+      const value = position[1];
+      formData.append(key, value);
+    });
 
     try {
       const response = await fetch("/integracao-cetaphil-sf", {
@@ -110,7 +106,6 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     } catch (error) {
       console.error(error);
-      console.log(formData);
       Swal.fire("Ops!", "Ocorreu um erro. Tente novamente mais tarde!", "error");
     }
   });
