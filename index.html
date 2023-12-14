@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./cetaphil-lp-sf.css" />
-  <!-- <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./cetaphil-lp-sf.css" />
+    <!-- <link
       rel="stylesheet"
       href="https://cloud.mail.lorealprofessionnel.com.br/lista-vip-curl-expression-style"
     /> -->
-  <title>Cethapil - LP</title>
-</head>
+    <title>Cethapil - LP</title>
+  </head>
+  <body>
+    <div class="x-cetaphil__container">
+      <form class="x-cetaphil__container__cadastro-form" id="cadastroForm">
+        <div class="x-cetaphil__container__cadastro-form__section">
+          <h2>FAÇA O SEU CADASTRO E BOA SORTE!</h2>
+        </div>
+        <div class="x-cetaphil__container__cadastro-form__section">
+          <div class="x-cetaphil__container__cadastro-form__section__intput-container">
+            <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group">
+              <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group__input-wrapper">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required />
+              </div>
+              <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group__input-wrapper">
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome" required />
+              </div>
+            </div>
+            <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group">
+              <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group__input-wrapper">
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" required />
+              </div>
+              <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group__input-wrapper">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+            </div>
+            <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group">
+              <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group__input-wrapper">
+                <label for="linkVideo">Link do Vídeo Publicado:</label>
+                <input type="text" id="linkVideo" name="linkVideo" required />
+              </div>
+              <div class="x-cetaphil__container__cadastro-form__section__intput-container__input-group__input-wrapper">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" data-mask="(00) 00000-0000" required />
+              </div>
+            </div>
+          </div>
+          <div class="x-cetaphil__container__cadastro-form__section__text-content">
+            <div class="x-cetaphil__container__cadastro-form__section__text-content__checkbox-wrapper">
+              <input type="checkbox" id="termosCheckbox1" name="termosCheckbox1" required />
+              <label for="termosCheckbox1">
+                Eu concordo com os <span><a href="#">termos e regulamentos da campanha</a></span>
+              </label>
+            </div>
+            <div class="x-cetaphil__container__cadastro-form__section__text-content__checkbox-wrapper">
+              <input type="checkbox" id="termosCheckbox2" name="termosCheckbox2" required />
+              <label for="termosCheckbox2">
+                Eu concordo com os <span><a href="#">termos e condições</a></span> e estou ciente da
+                <span><a href="#">política de privacidade</a></span
+                >.
+              </label>
+            </div>
+            <div class="x-cetaphil__container__cadastro-form__section__text-content__checkbox-wrapper">
+              <input type="checkbox" id="newsletterCheckbox" name="newsletterCheckbox" />
+              <label for="newsletterCheckbox">
+                Eu concordo em receber e-mails com promoções especiais e dicas de cuidados com a pele das marcas
+                Cetaphil e Galderma.
+              </label>
+            </div>
+          </div>
+          <div class="x-cetaphil__container__cadastro-form__section__button-wrapper">
+            <button type="submit">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
 
-<body>
-
-  <script src="https://unpkg.com/imask"></script>
-  <script src="./cetaphil-lp-sf.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
-
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./cetaphil-lp-sf.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
 </html>

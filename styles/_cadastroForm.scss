@@ -1,0 +1,75 @@
+.x-cetaphil__container {
+  margin: 60px auto;
+
+  &__cadastro-form {
+    background-color: #f1f9fc;
+    width: 974px;
+    height: 624px;
+    border-radius: 28px;
+    margin: 60px auto; // Movido do estilo inline
+
+    &__section {
+      text-align: center;
+
+      &__intput-container {
+        width: 573px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 33px;
+
+        &__input-group {
+          display: flex;
+          gap: 23px;
+
+          &__input-wrapper {
+            flex: 1;
+
+            input {
+              width: 275px;
+              height: 40px;
+              padding: 9.091px 22px 6.909px 22px;
+              align-items: center;
+              border-radius: 8px;
+              border: 1px solid #fff;
+              background: #fff;
+            }
+          }
+        }
+      }
+
+      &__text-content {
+        width: 490px;
+        margin: 0 auto;
+        color: #004987;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 390;
+        line-height: 140%;
+
+        a {
+          color: #004987;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 390;
+          line-height: 140%;
+          text-decoration-line: underline;
+        }
+      }
+
+      &__button-wrapper {
+        display: flex;
+        width: 173px;
+        height: 39.832px;
+        padding: 12px 24px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 40px;
+        border: 1px solid var(--Gradient-Blue-Turquoise, #004987);
+        background: var(--Gradient-Blue-Turquoise, linear-gradient(105deg, #004987 47.63%, #38a6c4 93.7%));
+        margin: 0 auto;
+      }
+    }
+  }
+}
