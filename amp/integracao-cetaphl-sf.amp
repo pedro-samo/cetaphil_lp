@@ -1,7 +1,7 @@
 %%[
   set @nome = requestParameter("nome")
 
-  SET @results = lookup("tb_LP_Migracao_2_Score", "email", "email", @email)
+  SET @results = lookup("tb_semana_da_moda_lp", "email", "email", @email)
 ]%%
 
 <script runat="server">
@@ -23,7 +23,7 @@ var nome = Variable.GetValue("@nome");
     Write('{"message":"Não é possível inserir dados Nulos...","statusCode":500}');
   }else{
    try{
-       var de = DataExtension.Init('tb_LP_Migracao_2_Score');
+       var de = DataExtension.Init('tb_semana_da_moda_lp');
       try{
         var results = Variable.GetValue("@results");
 
