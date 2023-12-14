@@ -4,8 +4,8 @@
 /node_modules
 
 # build files
-/sim-indicado.js
-/sim-indicado.css
+/cetaphil-lp-sf.js
+/cetaphil-lp-sf.css
 
 # misc
 .DS_Store
