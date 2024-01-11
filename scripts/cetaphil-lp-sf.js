@@ -85,22 +85,38 @@ window.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const data = {
-      nome,
-      sobrenome,
-      dataNascimento,
-      email,
-      linkVideo,
-      telefone: "55" + telefone.replace(/\D/g, ""),
-      optinEmail: newsletterCheckbox ? "true" : "false"
-    };
+    // const data = {
+    //   nome,
+    //   sobrenome,
+    //   dataNascimento,
+    //   email,
+    //   linkVideo,
+    //   telefone: "55" + telefone.replace(/\D/g, ""),
+    //   optinEmail: newsletterCheckbox ? "true" : "false"
+    // };
 
-    let formData = new FormData();
+    // let formData = new FormData();
 
-    Object.entries(data).forEach((position) => {
-      const key = position[0];
-      const value = position[1];
-      formData.append(key, value);
+    // Object.entries(data).forEach((position) => {
+    //   const key = position[0];
+    //   const value = position[1];
+    //   formData.append(key, value);
+    // });
+
+    const body = JSON.stringify({
+      deName: "tb_semana_da_moda_lp_trigger",
+      deExternalKey: "B7F5B2B7-2398-4496-BCB3-6A9AFE07A732",
+      primaryKeyName: "email",
+      primaryKey: email,
+      fields: {
+        Name: nome,
+        LastName: sobrenome,
+        EmailAddress: email,
+        Phone: "55" + telefone.replace(/\D/g, ""),
+        Birthdate: dataNascimento,
+        OptinEmail: newsletterCheckbox ? "true" : "false",
+        SubscriberKey: email
+      }
     });
 
     sendButton.innerText = "Enviando...";
@@ -110,7 +126,7 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("/integracao-cetaphil-sf", {
         method: "POST",
-        body: formData
+        body
       });
 
       if (!response.ok) {
@@ -131,6 +147,9 @@ window.addEventListener("DOMContentLoaded", () => {
           successInterfaceHeading.style.maxWidth = "278px";
         }
         successInterface.style.display = "flex";
+        window.dataLayer.push({
+          event: "form_sucess"
+        });
       }
     } catch (error) {
       console.error(error);

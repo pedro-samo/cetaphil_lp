@@ -1,0 +1,71 @@
+<script runat="server">
+  Platform.Load("core", "1.1.1");
+  Platform.Response.SetResponseHeader("Access-Control-Allow-Methods", "POST");
+  Platform.Response.SetResponseHeader("Access-Control-Allow-Origin", "*");
+  Platform.Response.SetResponseHeader("Set-Cookie", "Secure");
+  Platform.Response.SetResponseHeader("Strict-Transport-Security", "max-age = 0, cache-control: private, no-cache  ");
+  Platform.Response.SetResponseHeader("X-XSS-Protection", "1; mode=block");
+  Platform.Response.SetResponseHeader("X-Frame-Options", "Deny");
+  Platform.Response.SetResponseHeader("X-Content-Type-Options", "nosniff");
+  Platform.Response.SetResponseHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  Platform.Response.SetResponseHeader("Content-Security-Policy", "default-src 'self'");
+
+  // Recebendo dados da requisição POST
+  var payload = Platform.Request.GetPostData();
+  var payloadObj = Platform.Function.ParseJSON(payload);
+
+  // Definindo informações da Data Extension
+  var deName = payloadObj.deName;
+  var deExternalKey = payloadObj.deExternalKey;
+  var primaryKeyName = payloadObj.primaryKeyName;
+  var primaryKey = payloadObj.primaryKey;
+  var fields = payloadObj.fields;
+
+  if (deName && deExternalKey) {
+    var deFilter = DataExtension.Init(deExternalKey);
+    var filter = {
+      Property: primaryKeyName,
+      SimpleOperator: "equals",
+      Value: primaryKey
+    }
+    var result = deFilter.Rows.Retrieve(filter);
+
+    if (result.length > 0) {
+      Write('{"message":"Usuário já preencheu essa página.","statusCode": 401}');
+      return;
+    }
+
+    try {
+      var de = DataExtension.Init(deName);
+      try {
+        // de.Rows.Add(fields);
+        var data = {
+          attributes: {
+            Name: fields.Name,
+            LastName: fields.LastName,
+            EmailAddress: fields.EmailAddress,
+            Phone: fields.Phone,
+            Birthdate: fields.Birthdate,
+            OptinEmail: fields.OptinEmail,
+            SubscriberKey: fields.SubscriberKey,
+            Language: Platform.Variable.GetValue("@Language")
+          },
+          subscriber: {
+            EmailAddress: fields.EmailAddress,
+            SubscriberKey: fields.SubscriberKey
+          }
+        }
+
+        var TSD = TriggeredSend.Init("183771");
+        var Status = TSD.Send(data.subscriber, data.attributes);  
+        Write('{"message":"Sucesso","statusCode": 200}');
+      } catch (err) {
+        Write(Stringify(err));
+      }
+    } catch (err) {
+      Write('{"message":"Não foi possível consultar as informações.","statusCode": 500}');
+    }
+  } else {
+    Write('{"message":"Nome da Data Extension ou ExternalKey inválido.","statusCode": 404}');
+  }
+</script>
